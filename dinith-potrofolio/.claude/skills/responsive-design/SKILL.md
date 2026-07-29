@@ -1,6 +1,12 @@
+---
+name: responsive-design
+description: This skill should be used when the user asks to "make this responsive", "fix mobile layout", "add breakpoints", "check responsive design", or whenever styling changes, new components with CSS, or layout modifications are made in this repo. Apply before writing any styling code.
+version: 0.1.0
+---
+
 # Responsive Design Skill
 
-**When to use:** Whenever you make styling changes, create components with CSS, or modify layouts. Apply BEFORE writing any styling code.
+Provide the mobile-first responsive CSS approach and checklist used throughout this project's CRA (Create React App) codebase.
 
 ## Approach: Mobile-First
 
@@ -27,16 +33,16 @@
 
 ## CSS Patterns (No SCSS)
 
-Use these in plain CSS to keep responsive code clean:
+Use plain CSS to keep responsive code clean — SCSS is not installed in this project:
 
-- **Flexible layouts:** `flexbox` over fixed widths. Use `flex-wrap: wrap` for mobile, adjust in media queries.
+- **Flexible layouts:** Prefer `flexbox` over fixed widths. Use `flex-wrap: wrap` for mobile, adjust in media queries.
 - **Responsive typography:** Scale font sizes with viewport; use `clamp()` for fluid scaling:
   ```css
   font-size: clamp(0.875rem, 2.5vw, 1.5rem);
   ```
 - **Padding/margin:** Use `%` or viewport-relative units (`vw`/`vh`) for spacing that scales.
 - **Max-width containers:** Wrap content in a container with `max-width: 1200px` and `margin: 0 auto` to prevent oversized layouts on desktop.
-- **Images:** Always use `max-width: 100%; height: auto;` to prevent overflow on smaller screens.
+- **Images:** Always set `max-width: 100%; height: auto;` to prevent overflow on smaller screens.
 
 ## Checklist Before Completing a Feature
 
@@ -53,31 +59,30 @@ Use these in plain CSS to keep responsive code clean:
 
 ## Testing Protocol
 
-1. **Chrome DevTools:** Open DevTools (`F12`), toggle Device Toolbar (`Ctrl+Shift+M`).
-2. **Preset devices:** Test iPhone 12 (390px), iPad (768px), and Desktop (1440px).
-3. **Resize manually:** Slowly resize the viewport to catch edge cases between breakpoints.
-4. **Run the app:** `npm start` and interact with the actual component, not just a static screenshot.
+1. Open Chrome DevTools (`F12`) and toggle Device Toolbar (`Ctrl+Shift+M`).
+2. Test preset devices: iPhone 12 (390px), iPad (768px), and Desktop (1440px).
+3. Resize the viewport slowly to catch edge cases between breakpoints.
+4. Run the app with `npm start` and interact with the actual component, not just a static screenshot.
 
 ## Common Pitfalls to Avoid
 
-- ❌ Setting `width: 100vw` (causes horizontal scrollbar because it includes scrollbar width).
-- ❌ Using only `max-width` without `width` on container divs (confuses layout).
-- ❌ Forgetting `box-sizing: border-box` (padding/border expand the box).
-- ❌ Hard-coded pixel values for gaps/margins that don't scale.
-- ❌ Assuming `flex-wrap: wrap` without testing the actual breakpoint.
+- Setting `width: 100vw` — causes a horizontal scrollbar because it includes scrollbar width.
+- Using only `max-width` without `width` on container divs — confuses layout.
+- Forgetting `box-sizing: border-box` — padding/border expand the box.
+- Hard-coding pixel values for gaps/margins that don't scale.
+- Assuming `flex-wrap: wrap` works without testing the actual breakpoint.
 
 ## Accessibility + Responsive
 
 - **Line length:** Keep text lines between 45–75 characters for readability; use `max-width` on text containers.
-- **Contrast:** Ensure 4.5:1 ratio for body text, 3:1 for large text (WCAG AA).
-- **Touch targets:** Buttons and links should be at least `44px × 44px` on mobile.
-- **Focus indicators:** Never remove `:focus` styles; make them visible on all breakpoints.
+- **Contrast:** Ensure a 4.5:1 ratio for body text, 3:1 for large text (WCAG AA).
+- **Touch targets:** Size buttons and links at least `44px × 44px` on mobile.
+- **Focus indicators:** Never remove `:focus` styles; keep them visible on all breakpoints.
 
-## CRA Tooling
+## CRA Tooling Notes
 
-- No SCSS installed. Use plain CSS with `@media` queries.
-- If SCSS is needed, run `npm install -D sass` first; CRA will auto-detect and compile `.scss` files.
-- DevTools can auto-open DevTools on app start for faster testing (see Chrome settings).
+- No SCSS installed — use plain CSS with `@media` queries.
+- If SCSS becomes needed, run `npm install -D sass` first; CRA auto-detects and compiles `.scss` files.
 
 ## Template: Responsive Component CSS
 
@@ -121,7 +126,3 @@ Use these in plain CSS to keep responsive code clean:
   }
 }
 ```
-
-## Invoke This Skill
-
-Before writing CSS or modifying layouts, re-run this skill with `/responsive-design` to load the checklist and ensure you stay aligned with mobile-first, responsive standards throughout your modifications.
