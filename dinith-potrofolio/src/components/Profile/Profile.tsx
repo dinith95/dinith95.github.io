@@ -23,19 +23,19 @@ function Profile() {
       <div className="Profile-social">
         <a
           className="Profile-social-link"
-          href="#"
+          href="https://www.linkedin.com/in/dinith-jayabodhi/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
           <Linkedin />
         </a>
-        <a className="Profile-social-link" href="mailto:dinith@example.com" aria-label="Email">
+        <a className="Profile-social-link" href="mailto:jdinith72@gmail.com" aria-label="Email">
           <Mail />
         </a>
         <a
           className="Profile-social-link"
-          href="#"
+          href="https://github.com/dinith95"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"

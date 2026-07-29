@@ -9,9 +9,6 @@ function Header() {
   return (
     <header className="Header">
       <nav className="Header-nav">
-        <a className="Header-brand" href="#home" onClick={() => setIsMenuOpen(false)}>
-          Dinith
-        </a>
 
         <button
           className="Header-toggle"
