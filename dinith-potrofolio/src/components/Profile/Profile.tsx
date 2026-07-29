@@ -43,6 +43,14 @@ function Profile() {
           <Github />
         </a>
       </div>
+
+      <a
+        href={require('../../images/Dinith_Jayabodhi_CV.pdf')}
+        download="Dinith_Jayabodhi_CV.pdf"
+        className="Profile-cta"
+      >
+        Download Resume
+      </a>
     </section>
   );
 }
