@@ -47,6 +47,22 @@ There is no `lint` script — ESLint runs through `react-scripts` (`eslintConfig
 - **SCSS is not installed.** The old implementation used `.scss` throughout; if you reintroduce it, `npm i -D sass` first (CRA supports it once the package is present).
 - CI pins **Node 16** — avoid APIs newer than that unless you also update the workflow.
 
+## Component conventions
+
+Each component gets its own folder under `src/components/`, named after the component, containing its `.tsx` and co-located `.css` file:
+
+```
+src/components/
+├── Header/
+│   ├── Header.tsx
+│   └── Header.css
+└── Profile/
+    ├── Profile.tsx
+    └── Profile.css
+```
+
+Import from the folder path (e.g. `./components/Header/Header`). When creating a new component, always create its folder first rather than dropping loose files directly under `src/components/`.
+
 ## Reference material for the rebuild
 
 - **Last full implementation:** commit `54cd470`. Read it for the prior component breakdown (`HomePage`, `PageNavBar`, `about/{About,Bio,ghCard,lccard,socard}`, `timeline/`) and the assets under `src/assets/` (CV, certification badges, GitHub/StackOverflow/LeetCode logos). `git show 54cd470:src/components/...` to inspect without checking out.
