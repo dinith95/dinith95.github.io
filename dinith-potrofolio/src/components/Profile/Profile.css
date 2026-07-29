@@ -69,6 +69,7 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  
 }
 
 .Profile-social-link {
@@ -78,7 +79,7 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  color: #fff;
+  color: #51d1e2;
   transition: opacity 0.2s ease;
 }
 
