@@ -1,0 +1,83 @@
+.Profile {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1.5rem;
+}
+
+.Profile-name {
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+.Profile-title {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 500;
+  opacity: 0.8;
+  margin: 0.5rem 0 0;
+}
+
+.Profile-bio {
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.Profile-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.Profile-social-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.Profile-social-link:hover,
+.Profile-social-link:focus-visible {
+  opacity: 0.7;
+}
+
+.Profile-social-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  .Profile {
+    align-items: flex-start;
+    text-align: left;
+    padding: 3rem 2rem;
+  }
+
+  .Profile-social {
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .Profile-social-link svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Profile {
+    padding: 3.5rem 3rem;
+  }
+}
