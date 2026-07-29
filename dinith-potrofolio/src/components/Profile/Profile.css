@@ -19,7 +19,40 @@
   font-weight: 700;
   opacity: 0.8;
   margin: 0.5rem 0 0;
-  color: #00bcd4;
+  color: #51d1e2;
+  /* Reserve the line so it doesn't collapse while the typed text is empty. */
+  min-height: 1.7em;
+}
+
+.Profile-title-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background-color: currentColor;
+  vertical-align: text-bottom;
+  animation: Profile-caret-blink 1s step-end infinite;
+}
+
+@keyframes Profile-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.Profile-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Profile-title-caret {
+    animation: none;
+  }
 }
 
 .Profile-bio {
