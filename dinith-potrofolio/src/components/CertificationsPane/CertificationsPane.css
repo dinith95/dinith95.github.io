@@ -101,3 +101,13 @@
     line-height: 1.6;
   }
 }
+
+/* ---------- Desktop — 1024px and up: two columns ---------- */
+
+@media (min-width: 1024px) {
+  .CertificationsPane-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
