@@ -30,18 +30,24 @@ const experienceData: ExperienceEntry[] = [
 
 function ExperiencePane() {
   return (
-    <ul className="ExperiencePane-cards">
-      {experienceData.map((entry) => (
-        <li className="ExperiencePane-card" key={`${entry.company}-${entry.date}`}>
-          <div className="ExperiencePane-card-head">
-            <h3 className="ExperiencePane-card-title">{entry.role}</h3>
-            <span className="ExperiencePane-card-date">{entry.date}</span>
+    <ol className="ExperiencePane-timeline">
+      {experienceData.map((entry, index) => (
+        <li
+          className={`ExperiencePane-item ${index % 2 === 0 ? 'is-left' : 'is-right'}`}
+          key={`${entry.company}-${entry.date}`}
+        >
+          <span className="ExperiencePane-marker" aria-hidden="true" />
+          <div className="ExperiencePane-card">
+            <div className="ExperiencePane-card-head">
+              <h3 className="ExperiencePane-card-title">{entry.role}</h3>
+              <span className="ExperiencePane-card-date">{entry.date}</span>
+            </div>
+            <p className="ExperiencePane-card-subtitle">{entry.company}</p>
+            <p className="ExperiencePane-card-desc">{entry.description}</p>
           </div>
-          <p className="ExperiencePane-card-subtitle">{entry.company}</p>
-          <p className="ExperiencePane-card-desc">{entry.description}</p>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 
