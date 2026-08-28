@@ -9,6 +9,9 @@
 
 .Profile-visual {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 320px;
   margin: 0 auto 2.5rem;
 }
@@ -75,6 +78,9 @@
 /* ---------- Content column ---------- */
 
 .Profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   text-align: center;
 }
 
@@ -88,7 +94,7 @@
   font-size: clamp(1.25rem, 4vw, 1.5rem);
   font-weight: 700;
   opacity: 0.8;
-  margin: 0.5rem 0 0;
+  margin: 0;
   color: #51d1e2;
   /* Reserve the line so it doesn't collapse while the typed text is empty. */
   min-height: 1.7em;
@@ -119,16 +125,9 @@
   white-space: nowrap;
 }
 
-.Profile-heading {
-  margin: 1.5rem 0 1.5rem;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.25;
-}
-
 .Profile-bio {
   max-width: 40rem;
-  margin: 0 0 2rem;
+  margin: 0 auto;
   font-size: 1.125rem;
   line-height: 1.6;
   opacity: 0.9;
@@ -140,7 +139,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin-bottom: 2rem;
+  max-width: 22rem;
+  margin: 0 auto;
 }
 
 .Profile-feature {
@@ -254,7 +254,7 @@
     grid-template-columns: 320px 1fr;
     gap: 2.5rem;
     align-items: start;
-    padding: 3rem 2rem;
+    padding: 3rem 3.5rem;
   }
 
   .Profile-visual {
@@ -282,19 +282,12 @@
   }
 
   .Profile-content {
-    text-align: left;
+    gap: 2.5rem;
   }
 
   .Profile-features {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .Profile-actions {
-    align-items: flex-start;
-  }
-
-  .Profile-social {
-    justify-content: flex-start;
+    max-width: 34rem;
   }
 }
 
@@ -304,10 +297,11 @@
   .Profile {
     grid-template-columns: 400px 1fr;
     gap: 3rem;
-    padding: 3.5rem 3rem;
+    padding: 3.5rem 6rem;
   }
 
   .Profile-features {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 44rem;
   }
 }

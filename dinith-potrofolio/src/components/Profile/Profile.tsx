@@ -56,9 +56,7 @@ function Profile() {
           <span className="Profile-visually-hidden">{TITLES[0]}</span>
         </p>
 
-        <h2 className="Profile-heading">
-          I build software that's clean, reliable, and built to last.
-        </h2>
+      
         <p className="Profile-bio">
           I'm a developer who enjoys building web applications and exploring new technologies,
           with a focus on writing clean, maintainable code. My work spans full-stack development,
@@ -75,40 +73,42 @@ function Profile() {
           ))}
         </div>
 
-        <div className="Profile-actions">
-          <a
-            href={require('../../images/Dinith_Jayabodhi_CV.pdf')}
-            download="Dinith_Jayabodhi_CV.pdf"
-            className="Profile-cta"
-          >
-            Download Resume
-          </a>
+         <div className="Profile-actions">
+        <a
+          href={require('../../images/Dinith_Jayabodhi_CV.pdf')}
+          download="Dinith_Jayabodhi_CV.pdf"
+          className="Profile-cta"
+        >
+          Download Resume
+        </a>
 
-          <div className="Profile-social">
-            <a
-              className="Profile-social-link"
-              href="https://www.linkedin.com/in/dinith-jayabodhi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Linkedin />
-            </a>
-            <a className="Profile-social-link" href="mailto:jdinith72@gmail.com" aria-label="Email">
-              <Mail />
-            </a>
-            <a
-              className="Profile-social-link"
-              href="https://github.com/dinith95"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <Github />
-            </a>
-          </div>
+        <div className="Profile-social">
+          <a
+            className="Profile-social-link"
+            href="https://www.linkedin.com/in/dinith-jayabodhi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <Linkedin />
+          </a>
+          <a className="Profile-social-link" href="mailto:jdinith72@gmail.com" aria-label="Email">
+            <Mail />
+          </a>
+          <a
+            className="Profile-social-link"
+            href="https://github.com/dinith95"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <Github />
+          </a>
         </div>
       </div>
+
+      </div>
+     
     </section>
   );
 }

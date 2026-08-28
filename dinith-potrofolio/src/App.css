@@ -10,16 +10,11 @@
 .App-main {
   box-sizing: border-box;
   position: relative;
-  display: flex;
-  flex-direction: column;
   padding-bottom: 5rem;
 }
 
 @media (min-width: 768px) {
   .App-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 0 2rem 6rem;
+    padding-bottom: 6rem;
   }
 }
