@@ -130,7 +130,7 @@
   margin: 0 auto;
   font-size: 1.125rem;
   line-height: 1.6;
-  opacity: 0.9;
+  opacity: 0.75;
 }
 
 /* ---------- Feature cards ---------- */
@@ -149,6 +149,7 @@
   border-radius: 6px;
   padding: 1.25rem 1.125rem;
   transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .Profile-feature:hover,
