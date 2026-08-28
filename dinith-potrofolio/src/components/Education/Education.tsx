@@ -38,30 +38,33 @@ const educationData: EducationEntry[] = [
 
 function Education() {
   return (
-    <div className="Education">
-      <div className="Education-decor" aria-hidden="true" />
-      <div className="Education-list">
-        <ul className="Education-items">
-          {educationData.map((entry, index) => (
-            <li key={index} className="Education-item">
-              <h3 className="Education-degree">{entry.degree}</h3>
-              <p className="Education-institution">{entry.institution}</p>
-              <p className="Education-meta">
-                {entry.years}
-                {entry.location && ` • ${entry.location}`}
-              </p>
-              {entry.bullets.length > 0 && (
-                <ul className="Education-bullets">
-                  {entry.bullets.map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
+    <section className="Education-section" id="education">
+      <h2 className="Education-heading">Education</h2>
+      <div className="Education">
+        <div className="Education-decor" aria-hidden="true" />
+        <div className="Education-list">
+          <ul className="Education-items">
+            {educationData.map((entry, index) => (
+              <li key={index} className="Education-item">
+                <h3 className="Education-degree">{entry.degree}</h3>
+                <p className="Education-institution">{entry.institution}</p>
+                <p className="Education-meta">
+                  {entry.years}
+                  {entry.location && ` • ${entry.location}`}
+                </p>
+                {entry.bullets.length > 0 && (
+                  <ul className="Education-bullets">
+                    {entry.bullets.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

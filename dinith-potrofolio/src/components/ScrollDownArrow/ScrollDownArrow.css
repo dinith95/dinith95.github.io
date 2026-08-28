@@ -1,5 +1,6 @@
 .ScrollDownArrow {
-  position: absolute;
+  position: fixed;
+  z-index: 50;
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
@@ -15,6 +16,14 @@
   justify-content: center;
   transition: all 0.2s ease;
   animation: ScrollDownArrow-bounce 1.6s ease-in-out infinite;
+  opacity: 1;
+  visibility: visible;
+}
+
+.ScrollDownArrow.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .ScrollDownArrow:hover,
@@ -45,12 +54,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ScrollDownArrow {
-    animation: none;
-  }
-
+  .ScrollDownArrow,
   .ScrollDownArrow:hover,
   .ScrollDownArrow:focus-visible {
+    animation: none;
     transition: none;
   }
 }
