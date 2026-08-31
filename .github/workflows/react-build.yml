@@ -32,7 +32,7 @@ jobs:
       run: npm --prefix ./dinith-potrofolio ci
     
     - name: Build project
-      run: npm run build -prod
+      run: npm --prefix ./dinith-potrofolio run build -prod
       
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v4
