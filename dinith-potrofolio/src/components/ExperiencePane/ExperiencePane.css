@@ -1,0 +1,209 @@
+/* ---------- Timeline rail (mobile: single rail on the left) ---------- */
+
+.ExperiencePane-timeline {
+  box-sizing: border-box;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* The vertical line. Inset top/bottom so it starts and ends at the outer dots. */
+.ExperiencePane-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.ExperiencePane-item {
+  position: relative;
+}
+
+.ExperiencePane-marker {
+  position: absolute;
+  left: -1.75rem;
+  top: 1.25rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #51d1e2;
+  /* Ring punches the line out from behind the dot. */
+  box-shadow: 0 0 0 4px #000;
+  transition: transform 0.2s ease;
+}
+
+.ExperiencePane-item:hover .ExperiencePane-marker {
+  transform: scale(1.25);
+}
+
+/* ---------- Card ---------- */
+
+.ExperiencePane-card {
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 1rem 1.125rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.ExperiencePane-item:hover .ExperiencePane-card {
+  border-color: #51d1e2;
+  background-color: rgba(81, 209, 226, 0.06);
+}
+
+.ExperiencePane-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ExperiencePane-card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #51d1e2;
+  line-height: 1.4;
+}
+
+.ExperiencePane-card-date {
+  font-size: 0.8125rem;
+  color: #999;
+  order: 1;
+}
+
+.ExperiencePane-card-subtitle {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ExperiencePane-card-desc {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #ccc;
+  max-width: 70ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ExperiencePane-card,
+  .ExperiencePane-marker {
+    transition: none;
+  }
+}
+
+/* ---------- Tablet — 768px and up: centre rail, alternating cards ---------- */
+
+@media (min-width: 768px) {
+  .ExperiencePane-timeline {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 0;
+    gap: 1.5rem;
+  }
+
+  .ExperiencePane-timeline::before {
+    left: 50%;
+    transform: translateX(-1px);
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .ExperiencePane-item {
+    width: 50%;
+  }
+
+  .ExperiencePane-item.is-left {
+    margin-right: auto;
+    padding-right: 2.25rem;
+  }
+
+  .ExperiencePane-item.is-right {
+    margin-left: auto;
+    padding-left: 2.25rem;
+  }
+
+  .ExperiencePane-marker {
+    top: 1.5rem;
+  }
+
+  .ExperiencePane-item.is-left .ExperiencePane-marker {
+    left: auto;
+    right: -6px;
+  }
+
+  .ExperiencePane-item.is-right .ExperiencePane-marker {
+    left: -6px;
+  }
+
+  /* Short connector from the card edge across to the rail. */
+  .ExperiencePane-item::after {
+    content: '';
+    position: absolute;
+    top: calc(1.5rem + 5px);
+    width: 2.25rem;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .ExperiencePane-item.is-left::after {
+    right: 0;
+  }
+
+  .ExperiencePane-item.is-right::after {
+    left: 0;
+  }
+
+  .ExperiencePane-card {
+    padding: 1.25rem 1.375rem;
+  }
+
+  .ExperiencePane-card-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .ExperiencePane-card-title {
+    font-size: 1.125rem;
+  }
+
+  .ExperiencePane-card-date {
+    font-size: 0.875rem;
+    order: 0;
+  }
+
+  .ExperiencePane-card-subtitle {
+    margin-top: 0.375rem;
+    font-size: 1rem;
+  }
+
+  .ExperiencePane-card-desc {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+}
+
+/* ---------- Desktop — 1024px and up ---------- */
+
+@media (min-width: 1024px) {
+  .ExperiencePane-timeline {
+    gap: 2rem;
+  }
+
+  .ExperiencePane-card {
+    padding: 1.5rem;
+  }
+}

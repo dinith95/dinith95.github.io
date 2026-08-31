@@ -1,0 +1,308 @@
+.Profile {
+  box-sizing: border-box;
+  color: #fff;
+  padding: 2rem 1.5rem;
+  scroll-margin-top: 5rem;
+}
+
+/* ---------- Visual column: photo, cyan offset frame, fact card ---------- */
+
+.Profile-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 320px;
+  margin: 0 auto 2.5rem;
+}
+
+.Profile-decor {
+  display: none;
+}
+
+.Profile-photo-frame {
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.Profile-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.Profile-fact-card {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 2rem);
+  max-width: 280px;
+  margin: -2rem auto 0;
+  padding: 1.25rem 1.375rem;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.Profile-fact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.Profile-fact-row:first-child {
+  font-weight: 600;
+  color: #fff;
+}
+
+.Profile-fact-row:last-child {
+  color: #ccc;
+}
+
+.Profile-fact-row svg {
+  width: 20px;
+  height: 20px;
+  color: #51d1e2;
+  flex-shrink: 0;
+}
+
+/* ---------- Content column ---------- */
+
+.Profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.Profile-name {
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+.Profile-title {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 700;
+  opacity: 0.8;
+  margin: 0;
+  color: #51d1e2;
+  /* Reserve the line so it doesn't collapse while the typed text is empty. */
+  min-height: 1.7em;
+}
+
+.Profile-title-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background-color: currentColor;
+  vertical-align: text-bottom;
+  animation: Profile-caret-blink 1s step-end infinite;
+}
+
+@keyframes Profile-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.Profile-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.Profile-bio {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+/* ---------- Feature cards ---------- */
+
+.Profile-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.Profile-feature {
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 1.25rem 1.125rem;
+  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Profile-feature:hover,
+.Profile-feature:focus-within {
+  border-color: #51d1e2;
+  background-color: rgba(81, 209, 226, 0.06);
+}
+
+.Profile-feature svg {
+  width: 24px;
+  height: 24px;
+  color: #51d1e2;
+}
+
+.Profile-feature-title {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.Profile-feature-desc {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* ---------- Actions: CTA + socials ---------- */
+
+.Profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.Profile-cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #51d1e2;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #51d1e2;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.Profile-cta:hover,
+.Profile-cta:focus-visible {
+  background-color: #51d1e2;
+  border-color: #51d1e2;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.Profile-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Profile-social-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #51d1e2;
+  transition: opacity 0.2s ease;
+}
+
+.Profile-social-link:hover,
+.Profile-social-link:focus-visible {
+  opacity: 0.7;
+}
+
+.Profile-social-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Profile-title-caret {
+    animation: none;
+  }
+
+  .Profile-feature,
+  .Profile-cta,
+  .Profile-social-link {
+    transition: none;
+  }
+}
+
+/* ---------- Tablet — 768px and up ---------- */
+
+@media (min-width: 768px) {
+  .Profile {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 3rem 3.5rem;
+  }
+
+  .Profile-visual {
+    max-width: none;
+    margin: 0;
+    padding-bottom: 3.5rem;
+  }
+
+  .Profile-decor {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border: 2px solid #51d1e2;
+    border-radius: 12px;
+    transform: translate(20px, 20px);
+    z-index: 0;
+  }
+
+  .Profile-fact-card {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 0;
+    margin: 0;
+    width: calc(100% - 1.5rem);
+  }
+
+  .Profile-content {
+    gap: 2.5rem;
+  }
+
+  .Profile-features {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 34rem;
+  }
+}
+
+/* ---------- Desktop — 1024px and up ---------- */
+
+@media (min-width: 1024px) {
+  .Profile {
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    padding: 3.5rem 6rem;
+  }
+
+  .Profile-features {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 44rem;
+  }
+}

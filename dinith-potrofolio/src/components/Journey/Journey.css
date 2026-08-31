@@ -1,0 +1,115 @@
+.Journey-section {
+  box-sizing: border-box;
+  padding: 2rem 1.25rem;
+  color: #fff;
+  scroll-margin-top: 5rem;
+}
+
+.Journey-heading {
+  margin: 0 0 1.5rem 0;
+  font-size: clamp(1.5rem, 6vw, 1.875rem);
+  font-weight: 700;
+  color: #51d1e2;
+}
+
+/* ---------- Tab strip ---------- */
+
+.Journey-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1.5rem;
+}
+
+.Journey-tab {
+  box-sizing: border-box;
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  flex: 1;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #8a8a8a;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.Journey-tab:hover {
+  color: #fff;
+}
+
+.Journey-tab.is-active {
+  color: #51d1e2;
+  border-bottom-color: #51d1e2;
+}
+
+.Journey-tab svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.Journey-tab-label {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Journey-tab {
+    transition: none;
+  }
+}
+
+/* ---------- Tablet — 768px and up ---------- */
+
+@media (min-width: 768px) {
+  .Journey-section {
+    padding: 3rem 3.5rem;
+  }
+
+  .Journey-heading {
+    margin-bottom: 2rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .Journey-tabs {
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .Journey-tab {
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0 0.875rem;
+    font-size: 1rem;
+  }
+
+  .Journey-tab svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .Journey-tab-label {
+    display: inline;
+  }
+
+  .Journey-tab-label-short {
+    display: none;
+  }
+}
+
+/* ---------- Desktop — 1024px and up ---------- */
+
+@media (min-width: 1024px) {
+  .Journey-section {
+    padding: 3rem 6rem;
+  }
+}
