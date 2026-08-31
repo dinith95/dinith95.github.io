@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "master", "develop" ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
 
@@ -21,40 +26,41 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Node.js
       uses: actions/setup-node@v6
       with:
         node-version: 24.x
-    
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
     - name: Install NPM packages
       run: npm --prefix ./dinith-potrofolio ci
-    
+
     - name: Build project
       run: npm --prefix ./dinith-potrofolio run build -prod
-      
+
+    - name: SPA fallback
+      run: cp ./dinith-potrofolio/build/index.html ./dinith-potrofolio/build/404.html
+
     - name: Upload production-ready build files
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        name: production-files
-        path: ./build
-        
+        path: ./dinith-potrofolio/build
+
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: production-files
-        path: ./build
 
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
