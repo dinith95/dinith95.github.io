@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dinith Jayabodhi — Senior Software Engineer</title>
+<style>
+  /* ============================================================
+     Styling extracted from Dinith_Jayabodhi_CV.docx
+     Palette : navy #2C3B57 · sidebar #CADEE5 · links #0563C1 · body #404040
+     Fonts   : Franklin Gothic Medium (headings) · Arial (body)
+     ============================================================ */
+
+  :root {
+    --navy: #2c3b57;
+    --sidebar-bg: #cadee5;
+    --link: #0563c1;
+    --body-text: #404040;
+    --muted: #605e5c;
+    --heading-font: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    --body-font: Arial, "Gill Sans MT", "Helvetica Neue", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: var(--body-font);
+    color: var(--body-text);
+    background: #ffffff;
+    font-size: 13.5px;
+    line-height: 1.45;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2.2rem 1.5rem;
+  }
+
+  /* ---------- Header ---------- */
+
+  .cv-name {
+    font-family: var(--heading-font);
+    color: var(--navy);
+    text-transform: uppercase;
+    font-size: 2.7em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-align: center;
+    margin: 0 0 0.08em;
+  }
+
+  .cv-subtitle {
+    font-family: var(--heading-font);
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 1.35em;
+    text-align: center;
+    margin: 0 0 0.6em;
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid var(--navy);
+  }
+
+  .cv-contact {
+    text-align: center;
+    font-size: 0.95em;
+    margin-bottom: 1.9em;
+  }
+
+  .cv-contact .item {
+    white-space: nowrap;
+    margin: 0 0.65em;
+  }
+
+  .chip {
+    color: var(--navy);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 0.85em;
+    margin-right: 0.3em;
+  }
+
+  /* ---------- Two-column layout ---------- */
+
+  .cv-columns::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .cv-main {
+    float: left;
+    width: 63%;
+  }
+
+  .cv-sidebar {
+    float: right;
+    width: 32%;
+    border-left: 2px solid var(--navy);
+    padding: 0 0 1.5em 1.25em;
+  }
+
+  @media (max-width: 720px) {
+    .cv-main, .cv-sidebar {
+      float: none;
+      width: auto;
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  /* ---------- Section headings ---------- */
+
+  h2 {
+    font-family: var(--heading-font);
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 1.6em 0 0.6em;
+  }
+
+  .cv-main h2 {
+    border-top: 1.5px solid var(--navy);
+    border-bottom: 1.5px solid var(--navy);
+    padding: 0.3em 0;
+  }
+
+  .cv-main h2:first-child { margin-top: 0; }
+
+  .cv-sidebar h2 {
+    font-size: 1.05em;
+    margin: 1.4em 0 0.4em;
+  }
+
+  .cv-sidebar h2:first-child { margin-top: 0; }
+
+  /* ---------- Entries ---------- */
+
+  h3 {
+    color: var(--navy);
+    font-size: 1em;
+    font-weight: 700;
+    margin: 1.3em 0 0.15em;
+  }
+
+  .meta { margin: 0 0 0.4em; }
+  .meta .dates { font-size: 0.92em; color: var(--muted); }
+
+  ul { margin: 0.3em 0 1em; padding-left: 1.4em; }
+  li { margin: 0.18em 0; }
+
+  .cv-sidebar ul { margin: 0.2em 0 0.9em; padding-left: 1.2em; }
+  .cv-sidebar li { margin: 0.12em 0; }
+  .cv-sidebar p { margin: 0.6em 0 0.1em; }
+
+  a { color: var(--link); text-decoration: underline; }
+  a:hover { color: var(--navy); }
+
+  p { margin: 0.5em 0; }
+
+  /* ---------- Print ---------- */
+
+  @media print {
+    body {
+      padding: 0;
+      font-size: 12px;
+      max-width: none;
+    }
+    .cv-main h2 { break-after: avoid; }
+    h3 { break-after: avoid; }
+    li { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="cv-name">Dinith Jayabodhi</h1>
+  <p class="cv-subtitle">Senior Software Engineer</p>
+  <p class="cv-contact">
+    <span class="item"><span class="chip">P</span>(+94) 767332737</span>
+    <span class="item"><span class="chip">E</span><a href="mailto:Jdinith72@gmail.com">Jdinith72@gmail.com</a></span>
+    <span class="item"><span class="chip">L</span><a href="https://www.linkedin.com/in/dinith-jayabodhi/">Dinith Jayabodhi | LinkedIn</a></span>
+    <span class="item"><span class="chip">W</span><a href="https://dinith95.github.io/">dinith95.github.io</a></span>
+  </p>
+</header>
+
+<div class="cv-columns">
+
+  <main class="cv-main">
+
+    <h2>Objective</h2>
+    <p>Senior Software Engineer with <strong>5+ years of experience</strong> in developing scalable cloud native
+    applications using <strong>.NET, React, SQL, NoSQL and Azure technologies</strong> with a proven track record of
+    delivering high-quality solutions. Also, innovative individual who strives to stay updated with industry trends
+    and improve his skills continuously.</p>
+
+    <h2>Experience</h2>
+
+    <h3>Senior Software Engineer</h3>
+    <p class="meta"><span class="dates">Apr 2023 – Present</span><br>Cube Global (Pvt) Ltd. | London, UK</p>
+    <ul>
+      <li>Engaged on application development on <strong>Reg-Tech and FinTech</strong> domains.</li>
+      <li>Integrated <strong>Agentic AI developments</strong> to <strong>double</strong> the productivity.</li>
+      <li>Engineered scalable applications based on cloud technologies, resulting 20% increase in processing speed and 20% reduction on cost.</li>
+      <li>Streamlined the Production Support process with a solution which improved productivity by 100%.</li>
+      <li>Contributed in the evaluation process of <strong>Temporal and Airflow</strong> workflow tools.</li>
+      <li>Managed 5+ crisis scenarios and developed actions to prevent such scenarios in the future.</li>
+    </ul>
+
+    <h3>Senior Software Engineer / Software Engineer</h3>
+    <p class="meta"><span class="dates">Mar 2021 – Apr 2023</span><br>Insighture | Colombo, Sri Lanka</p>
+    <ul>
+      <li>Engaged on application development on <strong>Reg-Tech and FinTech</strong> domains.</li>
+      <li>Worked on Cube Global client projects.</li>
+      <li>President of the company Culture Club (Aug 2021 – Jul 2022)</li>
+      <li>Mentored 2 junior developers.</li>
+      <li>Actively involved in the migration of its services to Kubernetes which reduced operational costs by 30%</li>
+    </ul>
+
+    <h2>Education</h2>
+
+    <h3>Bachelor of Science in Management Information Systems</h3>
+    <p class="meta"><span class="dates">Mar 2016 – Feb 2020</span><br>University of Kelaniya | Sri Lanka</p>
+    <ul>
+      <li>Field of Study: Management &amp; Information Technology</li>
+      <li>Final Grade: Second Class Upper Division</li>
+      <li>Number of Credits: 120</li>
+      <li>Thesis: Blockchain Based Land Authentication Model for Sri Lanka</li>
+      <li>Projects: Microfinance Management Portal, Lecture Schedule Management Application</li>
+    </ul>
+
+    <h2>Certifications</h2>
+
+    <h3>Certified Kubernetes Application Developer (CKAD)</h3>
+    <p class="meta"><span class="dates">Feb 2025</span><br>Linux Foundation</p>
+    <ul>
+      <li>Certification Link: <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/e8418da6-2d3d-4abd-a776-79ce7e3bada2-lulbaddha-waduge-dinith-chathuranga-jayabodhi-f86f774c-af3f-4ba4-9ab2-d954e2579511-certificate.pdf">CKAD Certification</a></li>
+    </ul>
+
+    <h3>Develop ASP.NET Core Web App</h3>
+    <p class="meta"><span class="dates">Dec 2023</span><br>Microsoft</p>
+    <ul>
+      <li>Microsoft Applied Skills</li>
+      <li>Certification Link: <a href="https://learn.microsoft.com/en-us/users/dinithjayabodhi-8479/credentials/22e79d93faa954e3">Develop ASP.NET Core Web App</a></li>
+    </ul>
+
+    <h3>Secure storage for Azure Files and Azure Blob Storage</h3>
+    <p class="meta"><span class="dates">Dec 2023</span><br>Microsoft</p>
+    <ul>
+      <li>Microsoft Applied Skills</li>
+      <li>Certification Link: <a href="https://learn.microsoft.com/en-us/users/dinithjayabodhi-8479/credentials/f231285cadef4101">Secure storage for Azure Files</a></li>
+    </ul>
+
+    <h3>Azure Data Fundamentals</h3>
+    <p class="meta"><span class="dates">Mar 2023</span><br>Microsoft</p>
+    <ul>
+      <li>Microsoft Certifications</li>
+      <li>Certification Link: <a href="https://learn.microsoft.com/en-us/users/dinithjayabodhi-8479/credentials/43bf2330a9127111">Azure Data Fundamentals</a></li>
+    </ul>
+
+    <h3>Azure Cosmos DB Developer</h3>
+    <p class="meta"><span class="dates">Dec 2023</span><br>Microsoft</p>
+    <ul>
+      <li>Microsoft Certifications</li>
+      <li>Certification Link: <a href="https://learn.microsoft.com/en-us/users/dinithjayabodhi-8479/credentials/5d317cd8e1fccd6a">Azure Cosmos DB Developer</a></li>
+    </ul>
+
+  </main>
+
+  <aside class="cv-sidebar">
+
+    <h2>Skills</h2>
+    <ul>
+      <li>C#</li>
+      <li>TypeScript</li>
+      <li>.NET</li>
+      <li>React</li>
+      <li>SQL</li>
+      <li>NoSQL</li>
+      <li>Temporal</li>
+    </ul>
+
+    <h2>AI Skills</h2>
+    <ul>
+      <li>Claude Code</li>
+      <li>GitHub Copilot</li>
+    </ul>
+
+    <h2>Cloud Skills</h2>
+    <ul>
+      <li>Azure Cosmos DB</li>
+      <li>Azure Storage</li>
+      <li>AKS</li>
+      <li>Azure Service Bus</li>
+      <li>Azure Functions</li>
+      <li>Azure Monitor</li>
+      <li>Azure App Services</li>
+      <li>Azure Virtual Machines</li>
+    </ul>
+
+    <h2>DevOps Skills</h2>
+    <ul>
+      <li>Docker</li>
+      <li>Kubernetes</li>
+      <li>Helm</li>
+      <li>Azure Pipelines</li>
+      <li>GitHub Actions</li>
+    </ul>
+
+    <h2>Soft Skills</h2>
+    <ul>
+      <li>Communication</li>
+      <li>Teamwork</li>
+      <li>Problem-solving</li>
+      <li>Leadership</li>
+      <li>Emotional intelligence</li>
+      <li>Creativity</li>
+    </ul>
+
+    <h2>IDE &amp; Tooling</h2>
+    <ul>
+      <li>Visual Studio (2019 / 2022 / 2026)</li>
+      <li>Visual Studio Code</li>
+      <li>GitHub Copilot</li>
+      <li>Lens / Open Lens</li>
+      <li>K9s</li>
+      <li>Azure DevOps</li>
+      <li>Azure Storage Explorer</li>
+    </ul>
+
+    <h2>Referees</h2>
+
+    <p><strong>Sumith Ekanayake</strong><br>Senior Software Engineer</p>
+    <ul>
+      <li>Skill Quotient, Kuala Lumpur, Malaysia</li>
+      <li>(+60) 1114039553</li>
+      <li><a href="mailto:sumith@skillquotient.net">sumith@skillquotient.net</a></li>
+    </ul>
+
+    <p><strong>Ishara Lakshitha</strong><br>Associate Technical Lead</p>
+    <ul>
+      <li>Cube Global, London, UK</li>
+      <li>(+94) 713847053</li>
+      <li><a href="mailto:ishara.lakshitha@cube.global">ishara.lakshitha@cube.global</a></li>
+    </ul>
+
+  </aside>
+
+</div>
+
+</body>
+</html>
