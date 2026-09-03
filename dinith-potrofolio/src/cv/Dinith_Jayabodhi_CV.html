@@ -60,51 +60,46 @@
   }
 
   .cv-contact {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em 1.3em;
     font-size: 0.95em;
     margin-bottom: 1.9em;
   }
 
-  .cv-contact .item {
-    white-space: nowrap;
-    margin: 0 0.65em;
-  }
+  .cv-contact .item { white-space: nowrap; }
 
   .chip {
-    color: var(--navy);
+    display: inline-block;
+    background: var(--navy);
+    color: #ffffff;
     font-family: var(--heading-font);
     font-weight: 700;
     font-size: 0.85em;
-    margin-right: 0.3em;
+    line-height: 1;
+    padding: 0.35em 0.5em;
+    margin-right: 0.35em;
+    border-radius: 2px;
   }
 
   /* ---------- Two-column layout ---------- */
 
-  .cv-columns::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .cv-main {
-    float: left;
-    width: 63%;
+  .cv-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+    gap: 1.6em;
+    align-items: start;
   }
 
   .cv-sidebar {
-    float: right;
-    width: 32%;
     border-left: 2px solid var(--navy);
-    padding: 0 0 1.5em 1.25em;
+    padding: 1.1em 1.25em 1.5em;
   }
 
   @media (max-width: 720px) {
-    .cv-main, .cv-sidebar {
-      float: none;
-      width: auto;
-      border-left: 0;
-      padding-left: 0;
-    }
+    .cv-columns { grid-template-columns: 1fr; }
   }
 
   /* ---------- Section headings ---------- */
