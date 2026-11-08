@@ -1,5 +1,3 @@
-import './EducationPane.css';
-
 interface EducationEntry {
   degree: string;
   institution: string;
@@ -38,26 +36,29 @@ const educationData: EducationEntry[] = [
 
 function EducationPane() {
   return (
-    <ul className="EducationPane-cards">
+    <ol className="Journey-timeline">
       {educationData.map((entry) => (
-        <li className="EducationPane-card" key={entry.degree}>
-          <div className="EducationPane-card-head">
-            <h3 className="EducationPane-card-title">{entry.degree}</h3>
-            <span className="EducationPane-card-date">{entry.years}</span>
+        <li className="Journey-entry" key={entry.degree}>
+          <span className="Journey-marker" aria-hidden="true" />
+          <div className="Journey-meta">
+            <span className="Journey-when">{entry.years}</span>
+            <span className="Journey-where">
+              {entry.location ? `${entry.institution} • ${entry.location}` : entry.institution}
+            </span>
           </div>
-          <p className="EducationPane-card-subtitle">
-            {entry.location ? `${entry.institution} • ${entry.location}` : entry.institution}
-          </p>
-          {entry.bullets.length > 0 && (
-            <ul className="EducationPane-bullets">
-              {entry.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-          )}
+          <div className="Journey-body">
+            <h3 className="Journey-title">{entry.degree}</h3>
+            {entry.bullets.length > 0 && (
+              <ul className="Journey-bullets">
+                {entry.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 

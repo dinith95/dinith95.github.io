@@ -41,7 +41,13 @@ function Journey() {
 
   return (
     <section className="Journey-section" id="journey">
-      <h2 className="Journey-heading">Journey</h2>
+      <header className="Journey-header">
+        <div className="Journey-eyebrow">
+          <span className="Journey-eyebrow-rule" aria-hidden="true" />
+          <span>The path so far</span>
+        </div>
+        <h2 className="Journey-heading">Journey</h2>
+      </header>
 
       <div className="Journey-tabs" role="tablist" aria-label="Background">
         {PANES.map((pane, index) => (

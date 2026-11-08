@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Journey Section</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap">
+<style>
+body{margin:0;background:#07090c;font-family:'Inter',system-ui,sans-serif}
+.tab{appearance:none;background:none;border:0;cursor:pointer;font:inherit;color:#9aa4b0;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:.01em;transition:color .25s ease,background .25s ease}
+.tab:hover{color:#fff}
+.tab:focus-visible,.link:focus-visible{outline:2px solid #5fd8e8;outline-offset:3px}
+.link{color:#5fd8e8;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em}
+.link:hover{color:#fff}
+.row{transition:background .3s ease}
+.row:hover{background:rgba(255,255,255,.025)}
+@media (prefers-reduced-motion:reduce){.tab,.row{transition:none}}
+</style>
+</helmet>
+<section id="journey" style="box-sizing:border-box;min-height:900px;padding:clamp(56px,9vw,120px) clamp(20px,7vw,112px);color:#eef1f4;background:radial-gradient(900px 420px at 85% -10%,rgba(95,216,232,.08),transparent 70%),#07090c">
+<div style="max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)">
+
+<header style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="width:32px;height:1px;background:#5fd8e8"></span>
+<span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#5fd8e8;font-weight:500">The path so far</span>
+</div>
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(40px,6.5vw,76px);line-height:1.02;letter-spacing:-.02em;color:#fff">Journey</h2>
+</header>
+
+<div role="tablist" aria-label="Background" style="align-self:flex-start;max-width:100%;display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);overflow-x:auto">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" class="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"/></svg>
+<span>{{t.label}}</span>
+</button>
+</sc-for>
+</div>
+
+<div role="tabpanel" style="position:relative;display:flex;flex-direction:column;padding-left:clamp(28px,4vw,48px)">
+<span aria-hidden="true" style="position:absolute;left:5px;top:44px;bottom:44px;width:1px;background:linear-gradient(to bottom,rgba(95,216,232,.7),rgba(255,255,255,.12) 40%,rgba(255,255,255,.12))"></span>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+<article class="row" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));column-gap:48px;row-gap:12px;padding:36px 12px;border-bottom:1px solid rgba(255,255,255,.08)">
+<span aria-hidden="true" style="position:absolute;left:calc(-1 * clamp(28px,4vw,48px));top:44px;width:11px;height:11px;border-radius:50%;background:#07090c;border:2px solid #5fd8e8;box-sizing:border-box;box-shadow:0 0 0 5px #07090c,0 0 14px rgba(95,216,232,.35)"></span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9aa4b0">{{r.when}}</span>
+<span style="font-size:14px;color:#5fd8e8;font-weight:500">{{r.where}}</span>
+</div>
+<div style="grid-column:span 2;display:flex;flex-direction:column;gap:12px;min-width:0">
+<h3 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.2;color:#fff">{{r.title}}</h3>
+<p style="margin:0;font-size:15px;line-height:1.7;font-weight:300;color:#b4bcc6;max-width:60ch">{{r.body}}</p>
+<sc-if value="{{r.hasLink}}" hint-placeholder-val="{{ false }}">
+<a class="link" href="https://learn.microsoft.com" target="_blank" rel="noopener">View credential ↗</a>
+</sc-if>
+</div>
+</article>
+</sc-for>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { active: 'experience' }; }
+  renderVals() {
+    const data = {
+      experience: [
+        { when: '2023 — Present', where: 'Cube', title: 'Senior Software Engineer', body: 'Working across full-stack development, cloud infrastructure and applied AI.' },
+        { when: '2022 — 2023', where: 'Insighture', title: 'Senior Software Engineer', body: 'Promoted after delivering cloud-native applications on Microsoft Azure.' },
+        { when: '2021 — 2022', where: 'Insighture', title: 'Software Engineer', body: 'Built full-stack features and cloud integrations across client projects.' }
+      ],
+      certifications: [
+        { when: 'Dec 2025 · Renewed', where: 'Microsoft', title: 'Azure Cosmos DB Developer Specialty', body: 'Exam DP-420: designing, implementing and optimizing NoSQL data solutions on Azure Cosmos DB.', hasLink: true },
+        { when: 'Feb 2025', where: 'Linux Foundation', title: 'Certified Kubernetes Application Developer', body: 'Hands-on ability to design, build, deploy and troubleshoot cloud-native applications on Kubernetes.', hasLink: true },
+        { when: 'Dec 2023', where: 'Microsoft', title: 'Applied Skills: Secure Azure Storage', body: 'Configuring secure storage accounts, Blob Storage, Azure Files, encryption and networking.', hasLink: true }
+      ],
+      education: [
+        { when: '2016 — 2020', where: 'University of Kelaniya', title: 'BSc. Honours in Management Information Technology', body: 'Major in Information Technology. 2nd Upper Honours, GPA 3.67/4.00. Research: blockchain-based land authentication for Sri Lanka.' },
+        { when: '2015 — 2017', where: 'CIMA · United Kingdom', title: 'CGMA — Advanced Diploma in Management Accounting', body: 'Chartered Institute of Management Accountants.' }
+      ]
+    };
+    const defs = [
+      { id: 'experience', label: 'Experience', icon: 'M3 8h18v12H3zM9 8V5h6v3' },
+      { id: 'certifications', label: 'Certifications', icon: 'M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z' },
+      { id: 'education', label: 'Education', icon: 'M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.500 6-3v-4.500' }
+    ];
+    const on = 'background:#fff;color:#07090c';
+    return {
+      tabs: defs.map((d) => ({
+        label: d.label, icon: d.icon, selected: this.state.active === d.id,
+        style: this.state.active === d.id ? on : '',
+        pick: () => this.setState({ active: d.id })
+      })),
+      rows: data[this.state.active].map((r) => ({ hasLink: false, ...r }))
+    };
+  }
+}
+</script>
+</body>
+</html>
