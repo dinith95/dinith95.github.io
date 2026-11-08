@@ -1,6 +1,4 @@
 import { JSX } from 'react';
-import { OpenInWindow } from 'iconoir-react';
-import './CertificationsPane.css';
 
 interface CertificationEntry {
   title: string;
@@ -60,19 +58,24 @@ const certificationData: CertificationEntry[] = [
 
 function CertificationsPane() {
   return (
-    <ul className="CertificationsPane-cards">
+    <ol className="Journey-timeline">
       {certificationData.map((entry) => (
-        <li className="CertificationsPane-card" key={entry.title}>
-          <div className="CertificationsPane-card-head">
-            <h3 className="CertificationsPane-card-title">{entry.title}</h3>
-            <span className="CertificationsPane-card-date">{entry.date}</span>
+        <li className="Journey-entry" key={entry.title}>
+          <span className="Journey-marker" aria-hidden="true" />
+          <div className="Journey-meta">
+            <span className="Journey-when">{entry.date}</span>
+            <span className="Journey-where">{entry.issuer}</span>
           </div>
-          <p className="CertificationsPane-card-subtitle">{entry.issuer}</p>
-          <div className="CertificationsPane-card-desc">{entry.description}</div>
-          <a className="CertificationsPane-card-link" href={entry.link} target="_blank" rel="noopener noreferrer"><span>View Certification</span><OpenInWindow aria-hidden="true" /></a>
+          <div className="Journey-body">
+            <h3 className="Journey-title">{entry.title}</h3>
+            <div className="Journey-desc">{entry.description}</div>
+            <a className="Journey-link" href={entry.link} target="_blank" rel="noopener noreferrer">
+              View credential ↗
+            </a>
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 
