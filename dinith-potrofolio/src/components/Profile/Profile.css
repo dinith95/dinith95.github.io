@@ -265,11 +265,27 @@
   font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  font-family: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .Profile-cta:hover {
   background-color: var(--profile-accent);
+}
+
+/* Secondary variant: outlined, so "View CV" stays the single primary action. */
+.Profile-cta.is-ghost {
+  border-color: rgba(255, 255, 255, 0.28);
+  background-color: transparent;
+  color: #eef1f4;
+}
+
+.Profile-cta.is-ghost:hover {
+  border-color: var(--profile-accent);
+  background-color: transparent;
+  color: var(--profile-accent);
 }
 
 .Profile-cta svg {

@@ -56,6 +56,8 @@ Two CV artifacts, both in `src/`:
 - `src/cv/Dinith_Jayabodhi_CV.html` — the source, a standalone print-styled HTML page (has an `@media print` block). It is **not** part of the React bundle.
 - `src/images/Dinith_Jayabodhi_CV.pdf` — the generated PDF, imported in `Profile.tsx` as the download link. After editing the HTML, regenerate the PDF and replace this file.
 
+The "View CV" overlay renders the same content on-site from `src/components/CvOverlay/CvDocument.tsx` (data arrays + scoped `CvDocument.css`; phone and referees intentionally omitted). When you edit the HTML, mirror the change there and regenerate the PDF.
+
 To regenerate: open the HTML directly in Edge → Ctrl+P → Destination "Save as PDF" (the in-dialog one, not "Microsoft Print to PDF") → uncheck Headers and footers. Verify text is selectable (vector, not rasterised). Details in `readme.md`.
 
 ## Deploy

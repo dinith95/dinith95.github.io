@@ -1,5 +1,7 @@
-import { Download, Github, Linkedin, Mail } from 'iconoir-react';
+import { useCallback, useState } from 'react';
+import { Download, Eye, Github, Linkedin, Mail } from 'iconoir-react';
 import useTypewriter from '../../hooks/useTypewriter';
+import CvOverlay from '../CvOverlay/CvOverlay';
 import './Profile.css';
 
 const TITLES = ['Developer', 'Forward Deployed Engineer', 'Cloud Engineer', 'AI Enthusiast'];
@@ -24,6 +26,11 @@ const FEATURES = [
 
 function Profile() {
   const typedTitle = useTypewriter(TITLES);
+  const [isCvOpen, setIsCvOpen] = useState(false);
+  // Stable reference: the typewriter re-renders this component constantly,
+  // and a new callback each time would re-run the overlay's focus/scroll effect.
+  const closeCv = useCallback(() => setIsCvOpen(false), []);
+  const cvPdf = require('../../images/Dinith_Jayabodhi_CV.pdf');
 
   return (
     <section className="Profile" id="home">
@@ -84,11 +91,17 @@ function Profile() {
         </p>
 
         <div className="Profile-actions">
-          <a
-            href={require('../../images/Dinith_Jayabodhi_CV.pdf')}
-            download="Dinith_Jayabodhi_CV.pdf"
+          <button
+            type="button"
             className="Profile-cta"
+            aria-haspopup="dialog"
+            onClick={() => setIsCvOpen(true)}
           >
+            View CV
+            <Eye aria-hidden="true" />
+          </button>
+
+          <a href={cvPdf} download="Dinith_Jayabodhi_CV.pdf" className="Profile-cta is-ghost">
             Download Resume
             <Download aria-hidden="true" />
           </a>
@@ -128,6 +141,8 @@ function Profile() {
           </li>
         ))}
       </ul>
+
+      <CvOverlay isOpen={isCvOpen} onClose={closeCv} pdfHref={cvPdf} />
     </section>
   );
 }
