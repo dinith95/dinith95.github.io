@@ -1,0 +1,167 @@
+/* Scoped port of the print CV styles (src/cv/Dinith_Jayabodhi_CV.html). */
+
+.CvDocument {
+  --cv-navy: #2c3b57;
+  --cv-link: #0563c1;
+  --cv-body: #404040;
+  --cv-muted: #605e5c;
+  --cv-heading-font: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 1.5rem 1.25rem 2rem;
+  background: #fff;
+  color: var(--cv-body);
+  font-family: Arial, 'Gill Sans MT', 'Helvetica Neue', sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.CvDocument *,
+.CvDocument *::before,
+.CvDocument *::after {
+  box-sizing: border-box;
+}
+
+.CvDocument-name {
+  margin: 0 0 0.08em;
+  font-family: var(--cv-heading-font);
+  font-size: clamp(1.75rem, 8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cv-navy);
+}
+
+.CvDocument-subtitle {
+  margin: 0 0 0.6em;
+  padding-bottom: 0.5em;
+  border-bottom: 3px solid var(--cv-navy);
+  font-family: var(--cv-heading-font);
+  font-size: clamp(0.75rem, 3.4vw, 1.1rem);
+  letter-spacing: 0.25em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cv-navy);
+}
+
+.CvDocument-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4em 1.3em;
+  margin: 0 0 1.6em;
+}
+
+.CvDocument-item {
+  white-space: nowrap;
+}
+
+.CvDocument-chip {
+  display: inline-block;
+  margin-right: 0.35em;
+  padding: 0.35em 0.5em;
+  border-radius: 2px;
+  background: var(--cv-navy);
+  color: #fff;
+  font-family: var(--cv-heading-font);
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.CvDocument-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.6em;
+  align-items: start;
+}
+
+.CvDocument-sidebar {
+  padding: 1.1em 1.25em 1.5em;
+  border-left: 2px solid var(--cv-navy);
+}
+
+.CvDocument h2 {
+  margin: 1.6em 0 0.6em;
+  font-family: var(--cv-heading-font);
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cv-navy);
+}
+
+.CvDocument-main h2 {
+  padding: 0.3em 0;
+  border-top: 1.5px solid var(--cv-navy);
+  border-bottom: 1.5px solid var(--cv-navy);
+}
+
+.CvDocument-main > h2:first-child {
+  margin-top: 0;
+}
+
+.CvDocument-sidebar h2 {
+  margin: 1.4em 0 0.4em;
+  font-size: 1.05em;
+}
+
+.CvDocument-sidebar section:first-child h2 {
+  margin-top: 0;
+}
+
+.CvDocument h3 {
+  margin: 1.3em 0 0.15em;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--cv-navy);
+}
+
+.CvDocument p {
+  margin: 0.5em 0;
+}
+
+.CvDocument-meta {
+  margin: 0 0 0.4em;
+}
+
+.CvDocument-dates {
+  font-size: 0.92em;
+  color: var(--cv-muted);
+}
+
+.CvDocument ul {
+  margin: 0.3em 0 1em;
+  padding-left: 1.4em;
+}
+
+.CvDocument li {
+  margin: 0.18em 0;
+}
+
+.CvDocument-sidebar ul {
+  margin: 0.2em 0 0.9em;
+  padding-left: 1.2em;
+}
+
+.CvDocument a {
+  color: var(--cv-link);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.CvDocument a:hover {
+  color: var(--cv-navy);
+}
+
+@media (min-width: 768px) {
+  .CvDocument {
+    padding: 2.2rem 2rem 2.5rem;
+    font-size: 0.84375rem;
+  }
+
+  .CvDocument-columns {
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  }
+}

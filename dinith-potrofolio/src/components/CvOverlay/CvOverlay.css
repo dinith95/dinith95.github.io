@@ -1,0 +1,173 @@
+.CvOverlay {
+  --overlay-accent: #51d1e2;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: rgba(7, 9, 12, 0.78);
+  backdrop-filter: blur(6px);
+  animation: CvOverlay-fade 0.2s ease;
+}
+
+/* Mobile: full-height bottom sheet. */
+.CvOverlay-dialog {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 2.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  background-color: #0d1115;
+  color: #eef1f4;
+  overflow: hidden;
+  animation: CvOverlay-rise 0.25s ease;
+}
+
+.CvOverlay-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CvOverlay-filename {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--overlay-accent);
+}
+
+.CvOverlay-download,
+.CvOverlay-close {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: #eef1f4;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.CvOverlay-close {
+  width: 44px;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #d6dbe0;
+}
+
+.CvOverlay-download:hover,
+.CvOverlay-close:hover {
+  color: var(--overlay-accent);
+  border-color: var(--overlay-accent);
+}
+
+.CvOverlay-download:focus-visible,
+.CvOverlay-close:focus-visible {
+  outline: 2px solid var(--overlay-accent);
+  outline-offset: 3px;
+}
+
+.CvOverlay-download svg,
+.CvOverlay-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* The download label only appears once there is room. */
+.CvOverlay-download-label {
+  display: none;
+}
+
+.CvOverlay-body {
+  flex: 1;
+  min-height: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: #161b21;
+}
+
+@keyframes CvOverlay-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes CvOverlay-rise {
+  from {
+    transform: translateY(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .CvOverlay,
+  .CvOverlay-dialog {
+    animation: none;
+  }
+
+  .CvOverlay-download,
+  .CvOverlay-close {
+    transition: none;
+  }
+}
+
+/* ---------- Tablet — 768px and up: centred dialog ---------- */
+
+@media (min-width: 768px) {
+  .CvOverlay {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .CvOverlay-dialog {
+    width: 100%;
+    max-width: 860px;
+    height: 100%;
+    max-height: 960px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .CvOverlay-header {
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .CvOverlay-filename {
+    font-size: 0.75rem;
+  }
+
+  .CvOverlay-download {
+    padding: 0 1.125rem;
+  }
+
+  .CvOverlay-download-label {
+    display: inline;
+  }
+
+  .CvOverlay-body {
+    padding: 1.75rem;
+  }
+}
