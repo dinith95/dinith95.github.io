@@ -288,6 +288,17 @@
   color: var(--profile-accent);
 }
 
+/* WhatsApp: filled brand green so the direct-contact action stands out. */
+.Profile-cta.is-whatsapp {
+  background-color: #25d366;
+  color: #07090c;
+  font-weight: 600;
+}
+
+.Profile-cta.is-whatsapp:hover {
+  background-color: #1ebe5b;
+}
+
 .Profile-cta svg {
   width: 16px;
   height: 16px;

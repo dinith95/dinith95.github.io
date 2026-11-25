@@ -1,10 +1,13 @@
 import { useCallback, useState } from 'react';
-import { Download, Eye, Github, Linkedin, Mail } from 'iconoir-react';
+import { Download, Eye, Github, Linkedin, Mail, Whatsapp } from 'iconoir-react';
 import useTypewriter from '../../hooks/useTypewriter';
 import CvOverlay from '../CvOverlay/CvOverlay';
 import './Profile.css';
 
 const TITLES = ['Developer', 'Forward Deployed Engineer', 'Cloud Engineer', 'AI Enthusiast'];
+
+// International format, digits only (no +, spaces or leading zero), e.g. 94771234567.
+const WHATSAPP_NUMBER = '94767332737';
 
 const FEATURES = [
   {
@@ -104,6 +107,16 @@ function Profile() {
           <a href={cvPdf} download="Dinith_Jayabodhi_CV.pdf" className="Profile-cta is-ghost">
             Download Resume
             <Download aria-hidden="true" />
+          </a>
+
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="Profile-cta is-whatsapp"
+          >
+            <Whatsapp aria-hidden="true" />
+            Chat on WhatsApp
           </a>
 
           <div className="Profile-social">
