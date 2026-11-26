@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NavArrowDown } from 'iconoir-react';
 import './ScrollDownArrow.css';
 
@@ -7,6 +8,7 @@ const HIDE_AFTER_PX = 120;
 
 function ScrollDownArrow() {
   const [isHidden, setIsHidden] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsHidden(window.scrollY > HIDE_AFTER_PX);
@@ -17,10 +19,13 @@ function ScrollDownArrow() {
   }, []);
 
   const handleClick = () => {
+    const journey = document.getElementById('journey');
+    if (!journey) {
+      navigate('/journey');
+      return;
+    }
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById('journey')?.scrollIntoView({
-      behavior: prefersReducedMotion ? 'auto' : 'smooth',
-    });
+    journey.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   };
 
   return (
