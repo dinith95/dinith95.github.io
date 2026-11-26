@@ -18,3 +18,16 @@
     padding-bottom: 6rem;
   }
 }
+
+.App-notfound {
+  box-sizing: border-box;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.App-notfound a {
+  color: inherit;
+}

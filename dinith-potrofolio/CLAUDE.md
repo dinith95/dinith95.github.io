@@ -41,7 +41,7 @@ There is no `lint` script — ESLint runs through `react-scripts` (`eslintConfig
 
 ## Architecture
 
-Single-page, single-scroll site. `src/App.tsx` stacks `Header`, `Profile` (hero, uses `useTypewriter` in `src/hooks/`), `Journey`, and `ScrollDownArrow`.
+Client-side routed with `react-router-dom` v6 (`BrowserRouter` in `src/index.tsx`; v7 needs TS 5, so stay on v6). `src/App.tsx` renders `Header` plus `<Routes>`: `/` = single scroll of `Profile` (hero) + `Journey` + `ScrollDownArrow` (smooth-scrolls to `#journey`), `/journey` = `Journey`, `*` = inline 404. Nav links live in `NAV_LINKS` in `Header.tsx` (`NavLink`, active class `active`). Deep links work on GitHub Pages via the CI's `404.html` copy. Tests must wrap `<App />` in `MemoryRouter`.
 
 `Journey` is an ARIA tabs widget (roving arrow/Home/End keys) that switches between `ExperiencePane`, `CertificationsPane` and `EducationPane`. Add a new tab by extending the `PaneId` type and the `PANES` array in `Journey.tsx`. The three panes have no CSS of their own: they render the shared `Journey-timeline` / `Journey-entry` markup, styled entirely in `Journey.css`. (`Education/` is an unused leftover separate from `EducationPane/`.)
 

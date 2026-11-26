@@ -117,7 +117,7 @@ function Profile() {
           </a>
 
           <a href={cvPdf} download="Dinith_Jayabodhi_CV.pdf" className="Profile-cta is-ghost">
-            Download Resume
+            Download CV
             <Download aria-hidden="true" />
           </a>
         </div>
