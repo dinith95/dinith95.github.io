@@ -18,7 +18,7 @@ function ScrollDownArrow() {
 
   const handleClick = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById('education')?.scrollIntoView({
+    document.getElementById('journey')?.scrollIntoView({
       behavior: prefersReducedMotion ? 'auto' : 'smooth',
     });
   };
@@ -28,7 +28,7 @@ function ScrollDownArrow() {
       type="button"
       className={`ScrollDownArrow ${isHidden ? 'is-hidden' : ''}`}
       onClick={handleClick}
-      aria-label="Scroll to Education section"
+      aria-label="Scroll to Journey section"
       aria-hidden={isHidden}
       tabIndex={isHidden ? -1 : 0}
     >

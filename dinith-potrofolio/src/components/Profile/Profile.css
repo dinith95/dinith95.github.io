@@ -15,16 +15,27 @@
 /* ---------- Photo: techy viewfinder frame ---------- */
 
 .Profile-visual {
+  position: relative;
   display: flex;
   justify-content: center;
-  padding: 0.75rem;
+  /* Extra bottom room: the info chip overhangs the photo on mobile. */
+  padding: 0.75rem 0.75rem 2.25rem;
+}
+
+/* Soft accent glow behind the photo. */
+.Profile-visual::before {
+  content: '';
+  position: absolute;
+  inset: -10% -20%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(81, 209, 226, 0.13), transparent 75%);
 }
 
 .Profile-photo-frame {
   position: relative;
-  width: 260px;
+  width: 280px;
   max-width: 100%;
-  aspect-ratio: 26 / 33;
+  aspect-ratio: 28 / 36;
   font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 }
 
@@ -34,7 +45,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .Profile-photo {
@@ -49,23 +60,23 @@
   mix-blend-mode: screen;
   background:
     repeating-linear-gradient(to bottom, rgba(81, 209, 226, 0.07) 0 1px, transparent 1px 4px),
-    linear-gradient(160deg, rgba(81, 209, 226, 0.32), rgba(81, 209, 226, 0) 60%);
+    linear-gradient(160deg, rgba(81, 209, 226, 0.34), rgba(81, 209, 226, 0) 60%);
 }
 
 .Profile-photo-beam {
   position: absolute;
   left: 0;
   right: 0;
-  top: 38%;
+  top: 36%;
   height: 1px;
   pointer-events: none;
-  background: linear-gradient(to right, transparent, rgba(81, 209, 226, 0.8), transparent);
-  box-shadow: 0 0 12px rgba(81, 209, 226, 0.6);
+  background: linear-gradient(to right, transparent, rgba(81, 209, 226, 0.85), transparent);
+  box-shadow: 0 0 14px rgba(81, 209, 226, 0.6);
 }
 
 .Profile-corner {
-  --corner-size: 24px;
-  --corner-offset: -12px;
+  --corner-size: 26px;
+  --corner-offset: -14px;
   position: absolute;
   width: var(--corner-size);
   height: var(--corner-size);
@@ -101,35 +112,43 @@
   border-bottom-width: 2px;
 }
 
-.Profile-photo-tags {
+/* Floating glass chips over the photo. */
+.Profile-chip {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.625rem;
-  letter-spacing: 0.06em;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background-color: rgba(10, 14, 20, 0.86);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.Profile-photo-id {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  top: 32px;
+  right: -34px;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.75rem;
   color: var(--profile-accent);
 }
 
-.Profile-photo-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-sizing: border-box;
+.Profile-photo-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--profile-accent);
+}
+
+.Profile-photo-info {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  padding: 5rem 0.875rem 0.875rem;
-  border-radius: 0 0 4px 4px;
-  background: linear-gradient(
-    to top,
-    rgba(7, 9, 12, 0.95),
-    rgba(7, 9, 12, 0.6) 45%,
-    rgba(7, 9, 12, 0)
-  );
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: -1.625rem;
+  padding: 0.75rem 1rem;
 }
 
 .Profile-photo-role {
@@ -180,7 +199,7 @@
 }
 
 .Profile-eyebrow-rule {
-  width: 24px;
+  width: 28px;
   height: 1px;
   background-color: var(--profile-accent);
 }
@@ -188,35 +207,46 @@
 .Profile-name {
   margin: 0;
   font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(3.25rem, 15vw, 6.5rem);
+  font-size: clamp(3.5rem, 17vw, 7.5rem);
   font-weight: 300;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
   color: #fff;
 }
 
 .Profile-name-last {
   font-style: italic;
-  color: #b4bcc6;
+  color: var(--profile-accent);
 }
 
-.Profile-title {
+/* Role pills: the first is the primary title. */
+.Profile-roles {
+  list-style: none;
   margin: 0;
-  font-size: clamp(1.125rem, 4vw, 1.375rem);
-  font-weight: 300;
-  color: #d6dbe0;
-  /* Reserve the line so it doesn't collapse while the typed text is empty. */
-  min-height: 1.7em;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.Profile-title-caret {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  margin-left: 6px;
+.Profile-role {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0.875rem;
+  border: 1px solid rgba(81, 209, 226, 0.35);
+  border-radius: 999px;
+  background-color: rgba(81, 209, 226, 0.08);
+  color: #d6f4f8;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.Profile-role.is-active {
+  border-color: var(--profile-accent);
   background-color: var(--profile-accent);
-  vertical-align: text-bottom;
-  animation: Profile-caret-blink 1s step-end infinite;
+  color: #07090c;
+  font-weight: 600;
 }
 
 @keyframes Profile-caret-blink {
@@ -225,30 +255,21 @@
   }
 }
 
-.Profile-visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 .Profile-bio {
   margin: 0;
-  max-width: 52ch;
+  max-width: 56ch;
   font-size: 0.9375rem;
   font-weight: 300;
   line-height: 1.75;
   color: #b4bcc6;
 }
 
-/* ---------- Actions: CTA + socials ---------- */
+/* ---------- Actions: CTAs + socials ---------- */
 
 .Profile-actions {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .Profile-cta {
@@ -257,29 +278,31 @@
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  min-height: 52px;
+  min-height: 54px;
   padding: 0 1.75rem;
   border-radius: 999px;
   background-color: #fff;
   color: #07090c;
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   font-family: inherit;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .Profile-cta:hover {
   background-color: var(--profile-accent);
 }
 
-/* Secondary variant: outlined, so "View CV" stays the single primary action. */
+/* Secondary variant: outlined, so "View CV" stays the primary action. */
 .Profile-cta.is-ghost {
   border-color: rgba(255, 255, 255, 0.28);
   background-color: transparent;
   color: #eef1f4;
+  font-weight: 500;
 }
 
 .Profile-cta.is-ghost:hover {
@@ -288,14 +311,46 @@
   color: var(--profile-accent);
 }
 
+/* WhatsApp: filled brand green with a soft glow so direct contact stands out. */
+.Profile-cta.is-whatsapp {
+  background-color: #25d366;
+  color: #07090c;
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.28);
+}
+
+.Profile-cta.is-whatsapp:hover {
+  background-color: #1ebe5b;
+}
+
 .Profile-cta svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .Profile-social {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: 1rem;
+}
+
+.Profile-social-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--profile-muted);
+}
+
+.Profile-social-rule {
+  display: none;
+  width: 32px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.Profile-social-links {
+  display: flex;
   gap: 0.75rem;
 }
 
@@ -306,8 +361,9 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.04);
   color: #d6dbe0;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -328,7 +384,7 @@
   height: 18px;
 }
 
-/* ---------- Numbered features ---------- */
+/* ---------- Feature cards ---------- */
 
 .Profile-features {
   list-style: none;
@@ -336,47 +392,66 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
 }
 
 .Profile-feature {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 1rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.035);
 }
 
-.Profile-feature:last-child {
-  border-bottom: none;
+.Profile-feature-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Profile-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(81, 209, 226, 0.3);
+  border-radius: 12px;
+  background-color: rgba(81, 209, 226, 0.1);
+  color: var(--profile-accent);
+}
+
+.Profile-feature-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .Profile-feature-number {
-  grid-row: span 2;
-  padding-top: 0.3rem;
+  font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  color: var(--profile-accent);
+  letter-spacing: 0.14em;
+  color: var(--profile-muted);
 }
 
 .Profile-feature-title {
   margin: 0;
   font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.3125rem;
+  font-size: 1.625rem;
   font-weight: 400;
   color: #fff;
 }
 
 .Profile-feature-desc {
-  margin: 0.25rem 0 0;
-  font-size: 0.875rem;
+  margin: 0;
+  font-size: 0.9375rem;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.65;
   color: #b4bcc6;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .Profile-title-caret,
   .Profile-photo-block {
     animation: none;
   }
@@ -394,7 +469,7 @@
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 2rem;
-    row-gap: 3.5rem;
+    row-gap: 4rem;
     align-items: center;
     padding: 4rem 3.5rem;
   }
@@ -409,32 +484,33 @@
     grid-column: 8 / span 5;
     grid-row: 1;
     justify-content: flex-end;
+    padding: 1rem 1rem 1rem 0;
   }
 
   .Profile-photo-frame {
     width: 100%;
-    max-width: 360px;
-    aspect-ratio: 36 / 46;
+    max-width: 380px;
+    aspect-ratio: 38 / 49;
   }
 
   .Profile-corner {
-    --corner-size: 32px;
-    --corner-offset: -16px;
+    --corner-size: 34px;
+    --corner-offset: -18px;
   }
 
-  .Profile-photo-tags {
-    top: 14px;
-    left: 16px;
-    right: 16px;
-    font-size: 0.6875rem;
+  .Profile-photo-id {
+    display: inline-flex;
   }
 
-  .Profile-photo-caption {
-    padding: 6rem 1.25rem 1.25rem;
+  .Profile-photo-info {
+    left: -40px;
+    right: auto;
+    bottom: 36px;
+    padding: 1rem 1.25rem;
   }
 
   .Profile-photo-role {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 
   .Profile-photo-location {
@@ -446,18 +522,32 @@
   }
 
   .Profile-eyebrow-rule {
-    width: 32px;
+    width: 40px;
+  }
+
+  .Profile-role {
+    min-height: 34px;
+    padding: 0 1rem;
+    font-size: 0.8125rem;
   }
 
   .Profile-bio {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 
   .Profile-actions {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1.75rem;
+    gap: 0.875rem;
+  }
+
+  .Profile-social {
+    justify-content: flex-start;
+  }
+
+  .Profile-social-rule {
+    display: block;
   }
 
   .Profile-social-link {
@@ -470,36 +560,25 @@
     grid-row: 2;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .Profile-feature {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.75rem 2rem 0;
-    border-bottom: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.75rem;
   }
 
-  .Profile-feature:first-child {
-    padding-left: 0;
-    border-left: none;
+  .Profile-feature-icon {
+    width: 48px;
+    height: 48px;
   }
 
-  .Profile-feature:last-child {
-    padding-right: 0;
-  }
-
-  .Profile-feature-number {
-    padding-top: 0;
+  .Profile-feature-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .Profile-feature-title {
-    font-size: 1.5rem;
-  }
-
-  .Profile-feature-desc {
-    margin: 0;
+    font-size: 1.75rem;
   }
 }
 

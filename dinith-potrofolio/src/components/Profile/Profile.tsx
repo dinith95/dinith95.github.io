@@ -1,34 +1,37 @@
 import { useCallback, useState } from 'react';
-import { Download, Eye, Github, Linkedin, Mail } from 'iconoir-react';
-import useTypewriter from '../../hooks/useTypewriter';
+import { Cloud, Code, Download, Eye, Github, Linkedin, Mail, Sparks, Whatsapp } from 'iconoir-react';
 import CvOverlay from '../CvOverlay/CvOverlay';
 import './Profile.css';
 
 const TITLES = ['Developer', 'Forward Deployed Engineer', 'Cloud Engineer', 'AI Enthusiast'];
+
+// International format, digits only (no +, spaces or leading zero), e.g. 94771234567.
+const WHATSAPP_NUMBER = '94767332737';
 
 const FEATURES = [
   {
     number: '01',
     title: 'Development',
     description: 'Full-stack web apps, built with maintainability in mind.',
+    Icon: Code,
   },
   {
     number: '02',
     title: 'Cloud',
     description: 'Designing and running infrastructure that scales.',
+    Icon: Cloud,
   },
   {
     number: '03',
     title: 'AI',
     description: 'Exploring how AI can solve real, practical problems.',
+    Icon: Sparks,
   },
 ];
 
 function Profile() {
-  const typedTitle = useTypewriter(TITLES);
   const [isCvOpen, setIsCvOpen] = useState(false);
-  // Stable reference: the typewriter re-renders this component constantly,
-  // and a new callback each time would re-run the overlay's focus/scroll effect.
+  // Stable reference: a new callback each render would re-run the overlay's focus/scroll effect.
   const closeCv = useCallback(() => setIsCvOpen(false), []);
   const cvPdf = require('../../images/Dinith_Jayabodhi_CV.pdf');
 
@@ -49,12 +52,12 @@ function Profile() {
           <span className="Profile-photo-tint" aria-hidden="true" />
           <span className="Profile-photo-beam" aria-hidden="true" />
 
-          <div className="Profile-photo-tags" aria-hidden="true">
-            <span>{'// dinith_jayabodhi'}</span>
-            <span>ID_01</span>
-          </div>
+          <span className="Profile-chip Profile-photo-id" aria-hidden="true">
+            <span className="Profile-photo-dot" />
+            ID_01
+          </span>
 
-          <div className="Profile-photo-caption">
+          <div className="Profile-chip Profile-photo-info">
             <span className="Profile-photo-role">
               <span className="Profile-photo-prompt">&gt;</span> software &amp; cloud engineer
               <span className="Profile-photo-block" aria-hidden="true" />
@@ -78,11 +81,13 @@ function Profile() {
           <span className="Profile-name-last">Jayabodhi</span>
         </h1>
 
-        <p className="Profile-title">
-          <span aria-hidden="true">{typedTitle}</span>
-          <span className="Profile-title-caret" aria-hidden="true" />
-          <span className="Profile-visually-hidden">{TITLES[0]}</span>
-        </p>
+        <ul className="Profile-roles" aria-label="Roles">
+          {TITLES.map((title, index) => (
+            <li className={index === 0 ? 'Profile-role is-active' : 'Profile-role'} key={title}>
+              {title}
+            </li>
+          ))}
+        </ul>
 
         <p className="Profile-bio">
           I'm a developer who enjoys building web applications and exploring new technologies,
@@ -101,12 +106,26 @@ function Profile() {
             <Eye aria-hidden="true" />
           </button>
 
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="Profile-cta is-whatsapp"
+          >
+            <Whatsapp aria-hidden="true" />
+            Chat on WhatsApp
+          </a>
+
           <a href={cvPdf} download="Dinith_Jayabodhi_CV.pdf" className="Profile-cta is-ghost">
             Download Resume
             <Download aria-hidden="true" />
           </a>
+        </div>
 
-          <div className="Profile-social">
+        <div className="Profile-social">
+          <span className="Profile-social-label">Find me online</span>
+          <span className="Profile-social-rule" aria-hidden="true" />
+          <div className="Profile-social-links">
             <a
               className="Profile-social-link"
               href="https://www.linkedin.com/in/dinith-jayabodhi/"
@@ -133,11 +152,16 @@ function Profile() {
       </div>
 
       <ul className="Profile-features">
-        {FEATURES.map((feature) => (
-          <li className="Profile-feature" key={feature.title}>
-            <span className="Profile-feature-number">{feature.number}</span>
-            <h2 className="Profile-feature-title">{feature.title}</h2>
-            <p className="Profile-feature-desc">{feature.description}</p>
+        {FEATURES.map(({ number, title, description, Icon }) => (
+          <li className="Profile-feature" key={title}>
+            <div className="Profile-feature-head">
+              <span className="Profile-feature-icon" aria-hidden="true">
+                <Icon />
+              </span>
+              <span className="Profile-feature-number">{number}</span>
+            </div>
+            <h2 className="Profile-feature-title">{title}</h2>
+            <p className="Profile-feature-desc">{description}</p>
           </li>
         ))}
       </ul>
